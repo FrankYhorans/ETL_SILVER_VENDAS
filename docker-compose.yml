@@ -1,0 +1,174 @@
+x-airflow-common: &airflow-common
+  build:
+    context: .
+    dockerfile: Dockerfile.airflow
+  image: local/airflow-spark:2.10.5
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW_CONN_SPARK_DEFAULT: spark://spark-master:7077
+    JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+    SPARK_HOME: /home/airflow/.local/lib/python3.11/site-packages/pyspark
+    PYTHONPATH: /opt/spark:/opt/spark/src
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./logs/airflow:/opt/airflow/logs
+    - ${APP_JOBS_PATH}:/opt/spark/jobs
+    - ${APP_RESOURCES_PATH}:/opt/spark/src
+    - ${APP_STORAGE_PATH}:/opt/spark/data
+  networks:
+    - spark-net
+  depends_on:
+    postgres:
+      condition: service_healthy
+
+services:
+  # ======================================
+  # Spark Master
+  # ======================================
+  spark-master:
+    image: eng-spark:3.5
+    container_name: spark-master
+    hostname: spark-master
+    entrypoint: [
+      "/opt/spark/bin/spark-class",
+      "org.apache.spark.deploy.master.Master",
+      "--host", "spark-master",
+      "--port", "7077",
+      "--webui-port", "8080"
+    ]
+    environment:
+      - PYTHONPATH=/opt/spark/jobs/app:/opt/spark/jobs/app/
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - ${APP_JOBS_PATH}:/opt/spark/jobs
+      - ${APP_RESOURCES_PATH}:/opt/spark/src
+      - ${APP_STORAGE_PATH}:/opt/spark/data
+      - ${APP_LOG_PATH}:/opt/spark/logs/events
+      - ${APP_METRICS_PATH}:/opt/spark/metrics
+    networks:
+      - spark-net
+
+  # ======================================
+  # Spark Worker
+  # ======================================
+  spark-worker:
+    image: eng-spark:3.5
+    container_name: spark-worker
+    hostname: spark-worker
+    entrypoint: [
+      "/opt/spark/bin/spark-class",
+      "org.apache.spark.deploy.worker.Worker",
+      "--host", "spark-worker",
+      "--webui-port", "8081",
+      "spark://spark-master:7077"
+    ]
+    environment:
+      - PYTHONPATH=/opt/spark/jobs/app:/opt/spark/jobs/app/
+    ports:
+      - "8081:8081"
+    volumes:
+      - ${APP_JOBS_PATH}:/opt/spark/jobs
+      - ${APP_RESOURCES_PATH}:/opt/spark/src
+      - ${APP_STORAGE_PATH}:/opt/spark/data
+      - ${APP_LOG_PATH}:/opt/spark/logs/events
+      - ${APP_METRICS_PATH}:/opt/spark/metrics
+    depends_on:
+      - spark-master
+    networks:
+      - spark-net
+
+  # ======================================
+  # Airflow Metadata Database
+  # ======================================
+  postgres:
+    image: postgres:16
+    container_name: airflow-postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    networks:
+      - spark-net
+
+  # ======================================
+  # Storage Permissions for Airflow
+  # ======================================
+  airflow-storage-permissions:
+    image: alpine:3.20
+    container_name: airflow-storage-permissions
+    user: "0:0"
+    command:
+      - sh
+      - -c
+      - mkdir -p /opt/spark/data/bronze /opt/spark/data/silver && chgrp -R 0 /opt/spark/data/bronze /opt/spark/data/silver && chmod -R g+rwX /opt/spark/data/bronze /opt/spark/data/silver
+    volumes:
+      - ${APP_STORAGE_PATH}:/opt/spark/data
+    restart: "no"
+
+  # ======================================
+  # Airflow Initialization
+  # ======================================
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow-init
+    command: ["version"]
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "true"
+      _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_ADMIN_USER:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_ADMIN_PASSWORD:-airflow}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-storage-permissions:
+        condition: service_completed_successfully
+    restart: "no"
+
+  # ======================================
+  # Airflow Webserver
+  # ======================================
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    command: webserver
+    ports:
+      - "8082:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  # ======================================
+  # Airflow Scheduler
+  # ======================================
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  airflow-postgres-data:
+
+networks:
+  spark-net:
+    driver: bridge

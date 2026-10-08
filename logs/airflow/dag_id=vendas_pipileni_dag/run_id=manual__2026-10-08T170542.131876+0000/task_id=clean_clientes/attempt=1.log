@@ -1,0 +1,45 @@
+[2026-10-08T17:05:43.792+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-10-08T17:05:43.804+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: vendas_pipileni_dag.clean_clientes manual__2026-10-08T17:05:42.131876+00:00 [queued]>
+[2026-10-08T17:05:43.810+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: vendas_pipileni_dag.clean_clientes manual__2026-10-08T17:05:42.131876+00:00 [queued]>
+[2026-10-08T17:05:43.811+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2026-10-08T17:05:43.821+0000] {taskinstance.py:2890} INFO - Executing <Task(_PythonDecoratedOperator): clean_clientes> on 2026-10-08 17:05:42.131876+00:00
+[2026-10-08T17:05:43.824+0000] {standard_task_runner.py:72} INFO - Started process 182 to run task
+[2026-10-08T17:05:43.828+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'vendas_pipileni_dag', 'clean_clientes', 'manual__2026-10-08T17:05:42.131876+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/vendas_pipileni_dag.py', '--cfg-path', '/tmp/tmpmh8_0fum']
+[2026-10-08T17:05:43.831+0000] {standard_task_runner.py:105} INFO - Job 6: Subtask clean_clientes
+[2026-10-08T17:05:43.874+0000] {task_command.py:467} INFO - Running <TaskInstance: vendas_pipileni_dag.clean_clientes manual__2026-10-08T17:05:42.131876+00:00 [running]> on host 655e6921a337
+[2026-10-08T17:05:43.941+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='vendas_pipileni_dag' AIRFLOW_CTX_TASK_ID='clean_clientes' AIRFLOW_CTX_EXECUTION_DATE='2026-10-08T17:05:42.131876+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-10-08T17:05:42.131876+00:00'
+[2026-10-08T17:05:43.942+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2026-10-08T17:05:48.197+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:48 [INFO] src.clean_clientes — Iniciando limpeza de clientes
+[2026-10-08T17:05:48.196+0000] {clean_clientes.py:103} INFO - Iniciando limpeza de clientes
+[2026-10-08T17:05:48.199+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:48 [INFO] src.clean_clientes — Carregando CSV: /opt/spark/data/bronze/clientes.csv
+[2026-10-08T17:05:48.198+0000] {clean_clientes.py:12} INFO - Carregando CSV: /opt/spark/data/bronze/clientes.csv
+[2026-10-08T17:05:52.682+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:52 [INFO] src.clean_clientes — CSV carregado com sucesso com 61 linhas
+[2026-10-08T17:05:52.681+0000] {clean_clientes.py:19} INFO - CSV carregado com sucesso com 61 linhas
+[2026-10-08T17:05:52.684+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:52 [INFO] src.clean_clientes — Calculando erros da base clientes
+[2026-10-08T17:05:52.684+0000] {clean_clientes.py:23} INFO - Calculando erros da base clientes
+[2026-10-08T17:05:53.238+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:53 [INFO] src.clean_clientes — Encontrato 1 erros na coluna nome
+[2026-10-08T17:05:53.238+0000] {clean_clientes.py:49} INFO - Encontrato 1 erros na coluna nome
+[2026-10-08T17:05:53.477+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:53 [INFO] src.clean_clientes — Encontrato 4 erros na coluna email
+[2026-10-08T17:05:53.477+0000] {clean_clientes.py:51} INFO - Encontrato 4 erros na coluna email
+[2026-10-08T17:05:53.663+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:53 [INFO] src.clean_clientes — Encontrato 2 erros na coluna data_cadastro
+[2026-10-08T17:05:53.663+0000] {clean_clientes.py:53} INFO - Encontrato 2 erros na coluna data_cadastro
+[2026-10-08T17:05:53.903+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:53 [INFO] src.clean_clientes — Encontrato 2 erros na coluna telefone
+[2026-10-08T17:05:53.903+0000] {clean_clientes.py:55} INFO - Encontrato 2 erros na coluna telefone
+[2026-10-08T17:05:54.064+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:54 [INFO] src.clean_clientes — Encontrato 0 erros na coluna cidade
+[2026-10-08T17:05:54.064+0000] {clean_clientes.py:57} INFO - Encontrato 0 erros na coluna cidade
+[2026-10-08T17:05:54.175+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:54 [INFO] src.clean_clientes — Encontrato 9 erros em um total de 61 linhas que respresenta 15.00%
+[2026-10-08T17:05:54.175+0000] {clean_clientes.py:65} INFO - Encontrato 9 erros em um total de 61 linhas que respresenta 15.00%
+[2026-10-08T17:05:54.183+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:54 [INFO] src.clean_clientes — Normalizando colunas com erros
+[2026-10-08T17:05:54.183+0000] {clean_clientes.py:69} INFO - Normalizando colunas com erros
+[2026-10-08T17:05:54.233+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:54 [INFO] src.clean_clientes — Salvando dataframe
+[2026-10-08T17:05:54.232+0000] {clean_clientes.py:98} INFO - Salvando dataframe
+[2026-10-08T17:05:55.316+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:55 [INFO] src.clean_clientes — Dataframe salvo com sucesso
+[2026-10-08T17:05:55.316+0000] {clean_clientes.py:100} INFO - Dataframe salvo com sucesso
+[2026-10-08T17:05:55.318+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:05:55 [INFO] src.clean_clientes — Limpeza de clientes concluida com sucesso
+[2026-10-08T17:05:55.318+0000] {clean_clientes.py:108} INFO - Limpeza de clientes concluida com sucesso
+[2026-10-08T17:05:55.319+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-10-08T17:05:55.330+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2026-10-08T17:05:55.331+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=vendas_pipileni_dag, task_id=clean_clientes, run_id=manual__2026-10-08T17:05:42.131876+00:00, execution_date=20261008T170542, start_date=20261008T170543, end_date=20261008T170555
+[2026-10-08T17:05:55.374+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-10-08T17:05:55.404+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-10-08T17:05:55.412+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

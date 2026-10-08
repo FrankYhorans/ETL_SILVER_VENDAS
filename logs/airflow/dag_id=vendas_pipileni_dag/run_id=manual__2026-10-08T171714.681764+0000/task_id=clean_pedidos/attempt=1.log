@@ -1,0 +1,49 @@
+[2026-10-08T17:17:25.616+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-10-08T17:17:25.634+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: vendas_pipileni_dag.clean_pedidos manual__2026-10-08T17:17:14.681764+00:00 [queued]>
+[2026-10-08T17:17:25.641+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: vendas_pipileni_dag.clean_pedidos manual__2026-10-08T17:17:14.681764+00:00 [queued]>
+[2026-10-08T17:17:25.642+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2026-10-08T17:17:25.654+0000] {taskinstance.py:2890} INFO - Executing <Task(_PythonDecoratedOperator): clean_pedidos> on 2026-10-08 17:17:14.681764+00:00
+[2026-10-08T17:17:25.658+0000] {standard_task_runner.py:72} INFO - Started process 527 to run task
+[2026-10-08T17:17:25.662+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'vendas_pipileni_dag', 'clean_pedidos', 'manual__2026-10-08T17:17:14.681764+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/vendas_pipileni_dag.py', '--cfg-path', '/tmp/tmpgv9wrh78']
+[2026-10-08T17:17:25.665+0000] {standard_task_runner.py:105} INFO - Job 14: Subtask clean_pedidos
+[2026-10-08T17:17:25.710+0000] {task_command.py:467} INFO - Running <TaskInstance: vendas_pipileni_dag.clean_pedidos manual__2026-10-08T17:17:14.681764+00:00 [running]> on host c9d1510218ea
+[2026-10-08T17:17:25.775+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='vendas_pipileni_dag' AIRFLOW_CTX_TASK_ID='clean_pedidos' AIRFLOW_CTX_EXECUTION_DATE='2026-10-08T17:17:14.681764+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-10-08T17:17:14.681764+00:00'
+[2026-10-08T17:17:25.776+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2026-10-08T17:17:28.570+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:28 [INFO] src.clean_pedidos — Iniciando limpeza de clientes
+[2026-10-08T17:17:28.569+0000] {clean_pedidos.py:134} INFO - Iniciando limpeza de clientes
+[2026-10-08T17:17:28.573+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:28 [INFO] src.clean_pedidos — Carregando CSV: /opt/spark/data/bronze/pedidos.json
+[2026-10-08T17:17:28.573+0000] {clean_pedidos.py:14} INFO - Carregando CSV: /opt/spark/data/bronze/pedidos.json
+[2026-10-08T17:17:31.137+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:31 [INFO] src.clean_pedidos — CSV carregado com sucesso com 20 linhas
+[2026-10-08T17:17:31.136+0000] {clean_pedidos.py:16} INFO - CSV carregado com sucesso com 20 linhas
+[2026-10-08T17:17:31.139+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:31 [INFO] src.clean_pedidos — Calculando erros da base de pedidos
+[2026-10-08T17:17:31.139+0000] {clean_pedidos.py:20} INFO - Calculando erros da base de pedidos
+[2026-10-08T17:17:31.562+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:31 [INFO] src.clean_pedidos — Encontrato 2 erros na coluna data_pedido
+[2026-10-08T17:17:31.562+0000] {clean_pedidos.py:52} INFO - Encontrato 2 erros na coluna data_pedido
+[2026-10-08T17:17:31.725+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:31 [INFO] src.clean_pedidos — Encontrato 1 erros na coluna status
+[2026-10-08T17:17:31.725+0000] {clean_pedidos.py:55} INFO - Encontrato 1 erros na coluna status
+[2026-10-08T17:17:31.902+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:31 [INFO] src.clean_pedidos — Encontrato 2 erros na coluna valor
+[2026-10-08T17:17:31.902+0000] {clean_pedidos.py:58} INFO - Encontrato 2 erros na coluna valor
+[2026-10-08T17:17:32.034+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:32 [INFO] src.clean_pedidos — Encontrato 5 erros em um total de 20 linhas que respresenta 25.00%
+[2026-10-08T17:17:32.033+0000] {clean_pedidos.py:64} INFO - Encontrato 5 erros em um total de 20 linhas que respresenta 25.00%
+[2026-10-08T17:17:32.037+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:32 [INFO] src.clean_pedidos — Normalizando colunas com erros
+[2026-10-08T17:17:32.037+0000] {clean_pedidos.py:68} INFO - Normalizando colunas com erros
+[2026-10-08T17:17:32.121+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:32 [INFO] src.cotacao_dolar — Iniciando extracao da cotacao do dolar
+[2026-10-08T17:17:32.120+0000] {cotacao_dolar.py:8} INFO - Iniciando extracao da cotacao do dolar
+[2026-10-08T17:17:32.219+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:32 [INFO] src.cotacao_dolar — Extracao da cotacao do dolar concluida com sucesso
+[2026-10-08T17:17:32.219+0000] {cotacao_dolar.py:19} INFO - Extracao da cotacao do dolar concluida com sucesso
+[2026-10-08T17:17:32.221+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:32 [INFO] src.clean_pedidos — Extracao da cotacao do dolar concluida com sucesso
+[2026-10-08T17:17:32.221+0000] {clean_pedidos.py:103} INFO - Extracao da cotacao do dolar concluida com sucesso
+[2026-10-08T17:17:32.223+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:32 [INFO] src.clean_pedidos — Adicionando a cotacao ao dataframe
+[2026-10-08T17:17:32.223+0000] {clean_pedidos.py:104} INFO - Adicionando a cotacao ao dataframe
+[2026-10-08T17:17:32.240+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:32 [INFO] src.clean_pedidos — Salvando dataframe
+[2026-10-08T17:17:32.239+0000] {clean_pedidos.py:128} INFO - Salvando dataframe
+[2026-10-08T17:17:33.250+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:33 [INFO] src.clean_pedidos — Dataframe salvo com sucesso
+[2026-10-08T17:17:33.249+0000] {clean_pedidos.py:130} INFO - Dataframe salvo com sucesso
+[2026-10-08T17:17:33.251+0000] {logging_mixin.py:190} INFO - 2026-10-08 17:17:33 [INFO] src.clean_pedidos — Limpeza de clientes concluida com sucesso
+[2026-10-08T17:17:33.251+0000] {clean_pedidos.py:140} INFO - Limpeza de clientes concluida com sucesso
+[2026-10-08T17:17:33.252+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-10-08T17:17:33.264+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2026-10-08T17:17:33.265+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=vendas_pipileni_dag, task_id=clean_pedidos, run_id=manual__2026-10-08T17:17:14.681764+00:00, execution_date=20261008T171714, start_date=20261008T171725, end_date=20261008T171733
+[2026-10-08T17:17:33.299+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-10-08T17:17:33.318+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-08T17:17:33.322+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

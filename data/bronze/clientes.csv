@@ -1,0 +1,62 @@
+id,nome,email,data_cadastro,telefone,cidade
+1,João Silva,joao@email.com,2026-01-10,31999990001,Belo Horizonte
+2,Maria Souza,maria@email,2026-01-15,31999990002,Divinopolis
+3,,carlos@email.com,2026-01-20,31999990003,Contagem
+4,Ana Clara,ana.clara@email.com,2026-02-01,31999990004,Belo Horizonte
+5,Pedro Henrique,pedro@email.com,2026-13-01,31999990005,Betim
+6,Lucas Lima,lucas.lima@email.com,2026-02-05,,Uberlandia
+7,Fernanda Rocha,fernanda.rocha@email.com,2026-02-10,31999990007,Divinopolis
+8,Marcos Paulo,marcos.paulo@email,2026-02-11,31999990008,Divinopolis
+9,Juliana Alves,juliana.alves@email.com,2026-02-15,31999990009,Sete Lagoas
+10,Bruno Costa,bruno.costa@email.com,2026-02-16,31999990010,Ipatinga
+11,Patricia Gomes,patricia.gomes@email.com,2026-02-17,31999990011,Uberaba
+11,Patricia Gomes,patricia.gomes@email.com,2026-02-17,31999990011,Uberaba
+12,Rafael Mendes,rafael.mendes@email.com,2026-02-18,ABCDEF,Divinopolis
+13,Carla Dias,carla.dias@email.com,2026/02/19,31999990013,Belo Horizonte
+14,Gustavo Pereira,gustavo.pereira@email.com,2026-02-20,31999990014,Contagem
+15,Amanda Teixeira,amanda.teixeira@email.com,2026-02-21,31999990015,Betim
+16,Felipe Martins,,2026-02-22,31999990016,Uberlandia
+17,Renata Castro,renata.castro@email.com,2026-02-23,31999990017,Divinopolis
+18,Thiago Oliveira,thiago.oliveira@email.com,2026-02-24,31999990018,Divinopolis
+19,Vanessa Lima,vanessa.lima@email.com,2026-02-25,31999990019,Belo Horizonte
+20,José Augusto,jose.augusto@email.com,2026-02-26,31999990020,Belo Horizonte
+21,Paulo Roberto,paulo.roberto@email.com,2026-02-27,31999990021,Contagem
+22,Julia Mendes,julia.mendes@email.com,2026-02-28,31999990022,Betim
+23,Roberta Silva,roberta.silva@email.com,2026-02-29,31999990023,Ipatinga
+24,Diego Fernandes,diego.fernandes@email.com,2026-03-01,31999990024,Montes Claros
+25,Mariana Costa,mariana.costa@email.com,2026-03-02,31999990025,Divinopolis
+26,Leonardo Alves,leonardo.alves@email.com,,31999990026,Uberlandia
+27,Camila Rocha,camila.rocha@email,2026-03-03,31999990027,Sete Lagoas
+28,Henrique Souza,henrique.souza@email.com,2026-03-04,31999990028,Contagem
+29,Isabela Martins,isabela.martins@email.com,2026-03-05,31999990029,Belo Horizonte
+30,Matheus Gomes,matheus.gomes@email.com,2026-03-06,31999990030,Divinopolis
+31,Daniel Ferreira,daniel.ferreira@email.com,2026-03-06,31999990031,Uberaba
+32,Larissa Campos,larissa.campos@email.com,2026-03-07,31999990032,Belo Horizonte
+33,Ricardo Souza,ricardo.souza@email.com,2026-03-07,31999990033,Contagem
+34,Priscila Almeida,priscila.almeida@email.com,2026-03-08,31999990034,Betim
+35,Eduardo Ramos,eduardo.ramos@email.com,2026-03-08,31999990035,Uberlandia
+36,Carolina Lopes,carolina.lopes@email.com,2026-03-09,31999990036,Divinopolis
+37,Victor Hugo,victor.hugo@email.com,2026-03-09,31999990037,Ipatinga
+38,Natalia Martins,natalia.martins@email.com,2026-03-10,31999990038,Sete Lagoas
+39,Igor Santana,igor.santana@email.com,2026-03-10,31999990039,Belo Horizonte
+40,Beatriz Rocha,beatriz.rocha@email.com,2026-03-11,31999990040,Contagem
+41,Marcelo Dias,marcelo.dias@email.com,2026-03-11,31999990041,Betim
+42,Paula Fernandes,paula.fernandes@email.com,2026-03-12,31999990042,Uberaba
+43,Sergio Oliveira,sergio.oliveira@email.com,2026-03-12,31999990043,Divinopolis
+44,Tatiane Lima,tatiane.lima@email.com,2026-03-13,31999990044,Belo Horizonte
+45,Bruna Castro,bruna.castro@email.com,2026-03-13,31999990045,Contagem
+46,Felipe Andrade,felipe.andrade@email.com,2026-03-14,31999990046,Betim
+47,Aline Barbosa,aline.barbosa@email.com,2026-03-14,31999990047,Uberlandia
+48,Caio Mendes,caio.mendes@email.com,2026-03-15,31999990048,Divinopolis
+49,Monica Ribeiro,monica.ribeiro@email.com,2026-03-15,31999990049,Ipatinga
+50,Renan Costa,renan.costa@email.com,2026-03-16,31999990050,Belo Horizonte
+51,Claudia Nunes,claudia.nunes@email.com,2026-03-16,31999990051,Contagem
+52,Tiago Moreira,tiago.moreira@email.com,2026-03-17,31999990052,Betim
+53,Luciana Freitas,luciana.freitas@email.com,2026-03-17,31999990053,Uberaba
+54,Gabriel Pinto,gabriel.pinto@email.com,2026-03-18,31999990054,Divinopolis
+55,Vanessa Cardoso,vanessa.cardoso@email.com,2026-03-18,31999990055,Belo Horizonte
+56,Rodrigo Melo,rodrigo.melo@email.com,2026-03-19,31999990056,Contagem
+57,Patricia Almeida,patricia.almeida@email.com,2026-03-19,31999990057,Betim
+58,Leonardo Ribeiro,leonardo.ribeiro@email.com,2026-03-20,31999990058,Uberlandia
+59,Amanda Oliveira,amanda.oliveira@email.com,2026-03-20,31999990059,Divinopolis
+60,Guilherme Castro,guilherme.castro@email.com,2026-03-21,31999990060,Belo Horizonte
